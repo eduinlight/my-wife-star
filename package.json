@@ -1,0 +1,33 @@
+{
+  "name": "my-wife-star",
+  "version": "1.0.0",
+  "description": "a library for create an star on a canvas",
+  "main": "./lib/index.ts",
+  "repository": "https://github.com/eduinlight/my-wife-star.git",
+  "author": "Eduin Garcia Cordero",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.25.0",
+    "@typescript-eslint/parser": "^2.25.0",
+    "concurrently": "^5.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "livereload": "^0.9.1",
+    "serve": "^11.3.0",
+    "typescript": "^3.8.3",
+    "uglify-js": "^3.8.1"
+  },
+  "scripts": {
+    "min": "uglifyjs --compress --mangle --output ./public/main.min.js -- ./public/main.js",
+    "tsc": "tsc",
+    "dev:build": "tsc -w",
+    "dev:watch": "livereload ./public -p 8000",
+    "dev:server": "serve ./public",
+    "dev": "yarn dev:build && yarn dev:watch && yarn dev:server"
+  }
+}
