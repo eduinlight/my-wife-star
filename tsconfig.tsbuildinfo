@@ -1,0 +1,395 @@
+{
+  "program": {
+    "fileInfos": {
+      "./node_modules/typescript/lib/lib.es6.d.ts": {
+        "version": "c180f01a2aaac7d733001fa1db20f881dc83cf33096b674a1546ca26762e69da",
+        "signature": "c180f01a2aaac7d733001fa1db20f881dc83cf33096b674a1546ca26762e69da"
+      },
+      "./node_modules/typescript/lib/lib.es5.d.ts": {
+        "version": "b42eddba1a53c9d27279cfe7fc0416c10a81489826ad47e39013b9d340fc0cc7",
+        "signature": "b42eddba1a53c9d27279cfe7fc0416c10a81489826ad47e39013b9d340fc0cc7"
+      },
+      "./node_modules/typescript/lib/lib.es2015.d.ts": {
+        "version": "7994d44005046d1413ea31d046577cdda33b8b2470f30281fd9c8b3c99fe2d96",
+        "signature": "7994d44005046d1413ea31d046577cdda33b8b2470f30281fd9c8b3c99fe2d96"
+      },
+      "./node_modules/typescript/lib/lib.dom.d.ts": {
+        "version": "f2039e0dbc31f69183f6377b368c033802dfdcf77e5fd214def06c1fd7b225ed",
+        "signature": "f2039e0dbc31f69183f6377b368c033802dfdcf77e5fd214def06c1fd7b225ed"
+      },
+      "./node_modules/typescript/lib/lib.dom.iterable.d.ts": {
+        "version": "8329c3401aa8708426c7760f14219170f69a2cb77e4519758cec6f5027270faf",
+        "signature": "8329c3401aa8708426c7760f14219170f69a2cb77e4519758cec6f5027270faf"
+      },
+      "./node_modules/typescript/lib/lib.webworker.importscripts.d.ts": {
+        "version": "fe4e59403e34c7ff747abe4ff6abbc7718229556d7c1a5b93473fb53156c913b",
+        "signature": "fe4e59403e34c7ff747abe4ff6abbc7718229556d7c1a5b93473fb53156c913b"
+      },
+      "./node_modules/typescript/lib/lib.scripthost.d.ts": {
+        "version": "b9faa17292f17d2ad75e34fac77dd63a6403af1dba02d39cd0cbb9ffdf3de8b9",
+        "signature": "b9faa17292f17d2ad75e34fac77dd63a6403af1dba02d39cd0cbb9ffdf3de8b9"
+      },
+      "./node_modules/typescript/lib/lib.es2015.core.d.ts": {
+        "version": "734ddc145e147fbcd55f07d034f50ccff1086f5a880107665ec326fb368876f6",
+        "signature": "734ddc145e147fbcd55f07d034f50ccff1086f5a880107665ec326fb368876f6"
+      },
+      "./node_modules/typescript/lib/lib.es2015.collection.d.ts": {
+        "version": "4a0862a21f4700de873db3b916f70e41570e2f558da77d2087c9490f5a0615d8",
+        "signature": "4a0862a21f4700de873db3b916f70e41570e2f558da77d2087c9490f5a0615d8"
+      },
+      "./node_modules/typescript/lib/lib.es2015.generator.d.ts": {
+        "version": "765e0e9c9d74cf4d031ca8b0bdb269a853e7d81eda6354c8510218d03db12122",
+        "signature": "765e0e9c9d74cf4d031ca8b0bdb269a853e7d81eda6354c8510218d03db12122"
+      },
+      "./node_modules/typescript/lib/lib.es2015.iterable.d.ts": {
+        "version": "285958e7699f1babd76d595830207f18d719662a0c30fac7baca7df7162a9210",
+        "signature": "285958e7699f1babd76d595830207f18d719662a0c30fac7baca7df7162a9210"
+      },
+      "./node_modules/typescript/lib/lib.es2015.promise.d.ts": {
+        "version": "d4deaafbb18680e3143e8b471acd650ed6f72a408a33137f0a0dd104fbe7f8ca",
+        "signature": "d4deaafbb18680e3143e8b471acd650ed6f72a408a33137f0a0dd104fbe7f8ca"
+      },
+      "./node_modules/typescript/lib/lib.es2015.proxy.d.ts": {
+        "version": "5e72f949a89717db444e3bd9433468890068bb21a5638d8ab15a1359e05e54fe",
+        "signature": "5e72f949a89717db444e3bd9433468890068bb21a5638d8ab15a1359e05e54fe"
+      },
+      "./node_modules/typescript/lib/lib.es2015.reflect.d.ts": {
+        "version": "f5b242136ae9bfb1cc99a5971cccc44e99947ae6b5ef6fd8aa54b5ade553b976",
+        "signature": "f5b242136ae9bfb1cc99a5971cccc44e99947ae6b5ef6fd8aa54b5ade553b976"
+      },
+      "./node_modules/typescript/lib/lib.es2015.symbol.d.ts": {
+        "version": "9ae2860252d6b5f16e2026d8a2c2069db7b2a3295e98b6031d01337b96437230",
+        "signature": "9ae2860252d6b5f16e2026d8a2c2069db7b2a3295e98b6031d01337b96437230"
+      },
+      "./node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts": {
+        "version": "3e0a459888f32b42138d5a39f706ff2d55d500ab1031e0988b5568b0f67c2303",
+        "signature": "3e0a459888f32b42138d5a39f706ff2d55d500ab1031e0988b5568b0f67c2303"
+      },
+      "./src/index.ts": {
+        "version": "1ce003df40939440272c6af70659854dae23eed5e3c24a2feeb59275fb1d4e47",
+        "signature": "6492f8fc0958bc98f7f215c86a69e7378fb91a9e0602df9599f723cf920f8a48"
+      },
+      "./node_modules/@types/color-name/index.d.ts": {
+        "version": "f0cb4b3ab88193e3e51e9e2622e4c375955003f1f81239d72c5b7a95415dad3e",
+        "signature": "f0cb4b3ab88193e3e51e9e2622e4c375955003f1f81239d72c5b7a95415dad3e"
+      },
+      "./node_modules/@types/eslint-visitor-keys/index.d.ts": {
+        "version": "725d9be2fd48440256f4deb00649adffdbc5ecd282b09e89d4e200663792c34c",
+        "signature": "725d9be2fd48440256f4deb00649adffdbc5ecd282b09e89d4e200663792c34c"
+      },
+      "./node_modules/@types/json-schema/index.d.ts": {
+        "version": "92bc43ea5584457c9325a3d5b2ce5af77df6d2653be7e4c2e9a626f89293c3c1",
+        "signature": "92bc43ea5584457c9325a3d5b2ce5af77df6d2653be7e4c2e9a626f89293c3c1"
+      }
+    },
+    "options": {
+      "incremental": true,
+      "target": 2,
+      "strict": true,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "configFilePath": "./tsconfig.json"
+    },
+    "referencedMap": {},
+    "exportedModulesMap": {},
+    "semanticDiagnosticsPerFile": [
+      [
+        "./src/index.ts",
+        [
+          {
+            "file": "./src/index.ts",
+            "start": 67,
+            "length": 9,
+            "messageText": "Object is possibly 'null'.",
+            "category": 1,
+            "code": 2531
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 194,
+            "length": 1,
+            "messageText": "Parameter 'a' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 212,
+            "length": 1,
+            "messageText": "Parameter 'a' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 235,
+            "length": 1,
+            "messageText": "Parameter 'a' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 253,
+            "length": 1,
+            "messageText": "Parameter 'a' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 298,
+            "length": 5,
+            "messageText": "Parameter 'angle' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 373,
+            "length": 6,
+            "messageText": "Parameter 'vector' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 381,
+            "length": 6,
+            "messageText": "Parameter 'scalar' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 472,
+            "length": 5,
+            "messageText": "Parameter 'point' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 479,
+            "length": 5,
+            "messageText": "Parameter 'angle' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 845,
+            "length": 5,
+            "messageText": "Parameter 'point' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 966,
+            "length": 6,
+            "messageText": "Parameter 'center' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 974,
+            "length": 6,
+            "messageText": "Parameter 'radius' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 986,
+            "length": 7,
+            "messageText": "Object is possibly 'null'.",
+            "category": 1,
+            "code": 2531
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 1008,
+            "length": 7,
+            "messageText": "Object is possibly 'null'.",
+            "category": 1,
+            "code": 2531
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 1066,
+            "length": 7,
+            "messageText": "Object is possibly 'null'.",
+            "category": 1,
+            "code": 2531
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 1106,
+            "length": 5,
+            "messageText": "Parameter 'point' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 1170,
+            "length": 4,
+            "messageText": "Parameter 'from' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 1176,
+            "length": 2,
+            "messageText": "Parameter 'to' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 1184,
+            "length": 7,
+            "messageText": "Object is possibly 'null'.",
+            "category": 1,
+            "code": 2531
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 1217,
+            "length": 7,
+            "messageText": "Object is possibly 'null'.",
+            "category": 1,
+            "code": 2531
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 1246,
+            "length": 7,
+            "messageText": "Object is possibly 'null'.",
+            "category": 1,
+            "code": 2531
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 1289,
+            "length": 1,
+            "messageText": "Parameter 'a' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 1292,
+            "length": 1,
+            "messageText": "Parameter 'b' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 1295,
+            "length": 1,
+            "messageText": "Parameter 'c' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 1319,
+            "length": 7,
+            "messageText": "Object is possibly 'null'.",
+            "category": 1,
+            "code": 2531
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 1341,
+            "length": 7,
+            "messageText": "Object is possibly 'null'.",
+            "category": 1,
+            "code": 2531
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 1368,
+            "length": 7,
+            "messageText": "Object is possibly 'null'.",
+            "category": 1,
+            "code": 2531
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 1395,
+            "length": 7,
+            "messageText": "Object is possibly 'null'.",
+            "category": 1,
+            "code": 2531
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 1422,
+            "length": 7,
+            "messageText": "Object is possibly 'null'.",
+            "category": 1,
+            "code": 2531
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 1449,
+            "length": 7,
+            "messageText": "Object is possibly 'null'.",
+            "category": 1,
+            "code": 2531
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 1477,
+            "length": 7,
+            "messageText": "Object is possibly 'null'.",
+            "category": 1,
+            "code": 2531
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 1759,
+            "length": 10,
+            "messageText": "Parameter 'starPoints' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./src/index.ts",
+            "start": 1771,
+            "length": 6,
+            "messageText": "Parameter 'radius' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          }
+        ]
+      ],
+      "./node_modules/@types/color-name/index.d.ts",
+      "./node_modules/@types/eslint-visitor-keys/index.d.ts",
+      "./node_modules/@types/json-schema/index.d.ts",
+      "./node_modules/typescript/lib/lib.es6.d.ts",
+      "./node_modules/typescript/lib/lib.es5.d.ts",
+      "./node_modules/typescript/lib/lib.es2015.d.ts",
+      "./node_modules/typescript/lib/lib.dom.d.ts",
+      "./node_modules/typescript/lib/lib.dom.iterable.d.ts",
+      "./node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
+      "./node_modules/typescript/lib/lib.scripthost.d.ts",
+      "./node_modules/typescript/lib/lib.es2015.core.d.ts",
+      "./node_modules/typescript/lib/lib.es2015.collection.d.ts",
+      "./node_modules/typescript/lib/lib.es2015.generator.d.ts",
+      "./node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+      "./node_modules/typescript/lib/lib.es2015.promise.d.ts",
+      "./node_modules/typescript/lib/lib.es2015.proxy.d.ts",
+      "./node_modules/typescript/lib/lib.es2015.reflect.d.ts",
+      "./node_modules/typescript/lib/lib.es2015.symbol.d.ts",
+      "./node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts"
+    ]
+  },
+  "version": "3.8.3"
+}

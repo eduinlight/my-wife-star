@@ -1,11 +1,14 @@
 {
+  "files": [
+    "./src/index.ts"
+  ],
   "compilerOptions": {
     /* Basic Options */
-    "incremental": true,
+    // "incremental": true,
     /* Enable incremental compilation */
-    "target": "es5",
+    "target": "es2015",
     /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
-    "module": "amd",
+    // "module": "system",
     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
     // "lib": [],                             /* Specify library files to be included in the compilation. */
     // "allowJs": true,                       /* Allow javascript files to be compiled. */
@@ -14,10 +17,10 @@
     // "declaration": true,                   /* Generates corresponding '.d.ts' file. */
     // "declarationMap": true,                /* Generates a sourcemap for each corresponding '.d.ts' file. */
     // "sourceMap": true,                     /* Generates corresponding '.map' file. */
-    "outFile": "./public/main.js",
+    // "outFile": "./public/main.js",
     /* Concatenate and emit output to single file. */
     // "outDir": "./",                        /* Redirect output structure to the directory. */
-    "rootDir": "./src",
+    // "rootDir": "./src",
     /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
     // "composite": true,                     /* Enable project compilation */
     // "tsBuildInfoFile": "./",               /* Specify file to store incremental compilation information */
