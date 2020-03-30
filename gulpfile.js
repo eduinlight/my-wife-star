@@ -1,13 +1,16 @@
 const gulp = require('gulp')
 const connect = require('gulp-connect')
 const path = require('path')
+const fs = require('fs')
 const log = require('fancy-log')
 const browserify = require('browserify')
 const source = require('vinyl-source-stream')
 const tsify = require('tsify')
 const sourcemaps = require('gulp-sourcemaps')
 const buffer = require('vinyl-buffer')
-var watchify = require('watchify')
+const uglify = require('gulp-uglify')
+const clean = require('gulp-clean')
+const watchify = require('watchify')
 
 const srcPath = 'src'
 const publicPath = 'public'
@@ -39,6 +42,14 @@ function watch (done) {
   done()
 }
 
+function clear (done) {
+  if (fs.existsSync(publicJSPath)) {
+    gulp.src(publicJSPath, { read: false }).pipe(clean().on('finish', done))
+  } else {
+    done()
+  }
+}
+
 function build (done) {
   browserify({
     basedir: srcPath,
@@ -56,39 +67,40 @@ function build (done) {
     .pipe(source(bundleName))
     .pipe(buffer())
     .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(uglify())
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(publicJSPath))
-  done()
+    .pipe(gulp.dest(publicJSPath).on('finish', done))
 }
+
+const watchedTsBrowserify = watchify(browserify({
+  basedir: srcPath,
+  debug: true,
+  entries: ['index.ts'],
+  cache: {},
+  packageCache: {}
+})
+  .plugin(tsify), {
+  ignoreWatch: true
+})
 
 function buildDev () {
-  const watchedTsBrowserify = watchify(browserify({
-    basedir: srcPath,
-    debug: true,
-    entries: ['index.ts'],
-    cache: {},
-    packageCache: {}
-  })
-    .plugin(tsify))
-
-  function bundle () {
-    watchedTsBrowserify
-      .bundle()
-      .on('error', (error) => {
-        if (error.stream) {
-          delete error.stream
-        }
-        log(error)
-      })
-      .pipe(source(bundleName))
-      .pipe(sourcemaps.write('.'))
-      .pipe(gulp.dest(publicJSPath))
-  }
-
-  bundle()
-  watchedTsBrowserify.on('update', buildDev)
-  // watchedTsBrowserify.on('log', log)
+  watchedTsBrowserify
+    .bundle()
+    .on('error', (error) => {
+      if (error.stream) {
+        delete error.stream
+      }
+      log(error)
+    })
+    .pipe(source(bundleName))
+    .pipe(gulp.dest(publicJSPath))
 }
 
+watchedTsBrowserify.on('update', () => {
+  log.info('Rebuild: ')
+  buildDev()
+})
+watchedTsBrowserify.on('log', log)
+
 exports.dev = gulp.parallel(server, watch, buildDev)
-exports.build = build
+exports.build = gulp.series(clear, build)
