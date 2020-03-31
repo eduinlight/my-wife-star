@@ -2,13 +2,13 @@ import Board from './board'
 import Star from './star'
 import Point2D from './point'
 
-const body = document.querySelector('body') as HTMLBodyElement
+const root = document.querySelector('#root') as HTMLDivElement
 
 const container = document.createElement('div')
 container.style.display = 'flex'
 container.style.flexWrap = 'wrap'
 
-body.appendChild(container)
+root.appendChild(container)
 
 const starSize = 200
 const totalPoints = 30
