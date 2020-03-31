@@ -42,6 +42,7 @@
   "scripts": {
     "dev": "gulp dev",
     "build": "gulp build",
+    "deployNow": "yarn build && now --prod ./public",
     "lint": "eslint --fix \"./src/**\"",
     "test": "jest"
   }

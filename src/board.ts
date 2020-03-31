@@ -13,55 +13,48 @@ class Board {
     this.width = width
     this.height = height
     this.context = context
+
+    this.configure()
   }
 
-  toXY (point: Point2D): Point2D {
-    return new Point2D(
-      point.x + this.width / 2.0,
-      -point.y + this.height / 2.0
-    )
+  configure (): void {
+    this.context.translate(this.width / 2.0, this.height / 2.0)
   }
 
   drawLine (from: Point2D, to: Point2D): void {
-    const fromTransformed = this.toXY(from)
-    const toTransformed = this.toXY(to)
-    this.context.moveTo(fromTransformed.x, fromTransformed.y)
-    this.context.lineTo(toTransformed.x, toTransformed.y)
+    this.context.moveTo(from.x, from.y)
+    this.context.lineTo(to.x, to.y)
     this.context.stroke()
   }
 
   drawCircle (center: Point2D, radius: number): void {
-    const centerTransformed = this.toXY(center)
     this.context.beginPath()
-    this.context.arc(centerTransformed.x, centerTransformed.y, radius, 0, 2 * Math.PI)
+    this.context.arc(center.x, center.y, radius, 0, 2 * Math.PI)
     this.context.stroke()
   }
 
   fillCircle (center: Point2D, radius: number, color: Color = 'black'): void {
-    const centerTransformed = this.toXY(center)
     this.context.beginPath()
-    this.context.arc(centerTransformed.x, centerTransformed.y, radius, 0, 2 * Math.PI)
+    this.context.arc(center.x, center.y, radius, 0, 2 * Math.PI)
     this.context.fillStyle = color
     this.context.fill()
   }
 
   drawTriangle (triangle: Triangle): void {
-    const triangleTransformed = new Triangle(this.toXY(triangle.a), this.toXY(triangle.b), this.toXY(triangle.c))
     this.context.beginPath()
-    this.context.moveTo(triangleTransformed.a.x, triangleTransformed.a.y)
-    this.context.lineTo(triangleTransformed.b.x, triangleTransformed.b.y)
-    this.context.lineTo(triangleTransformed.c.x, triangleTransformed.c.y)
-    this.context.lineTo(triangleTransformed.a.x, triangleTransformed.a.y)
+    this.context.moveTo(triangle.a.x, triangle.a.y)
+    this.context.lineTo(triangle.b.x, triangle.b.y)
+    this.context.lineTo(triangle.c.x, triangle.c.y)
+    this.context.lineTo(triangle.a.x, triangle.a.y)
     this.context.stroke()
   }
 
   fillTriangle (triangle: Triangle, color: Color = 'black'): void {
-    const triangleTransformed = new Triangle(this.toXY(triangle.a), this.toXY(triangle.b), this.toXY(triangle.c))
     this.context.beginPath()
-    this.context.moveTo(triangleTransformed.a.x, triangleTransformed.a.y)
-    this.context.lineTo(triangleTransformed.b.x, triangleTransformed.b.y)
-    this.context.lineTo(triangleTransformed.c.x, triangleTransformed.c.y)
-    this.context.lineTo(triangleTransformed.a.x, triangleTransformed.a.y)
+    this.context.moveTo(triangle.a.x, triangle.a.y)
+    this.context.lineTo(triangle.b.x, triangle.b.y)
+    this.context.lineTo(triangle.c.x, triangle.c.y)
+    this.context.lineTo(triangle.a.x, triangle.a.y)
     this.context.fillStyle = color
     this.context.fill()
   }
