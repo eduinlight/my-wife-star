@@ -5,4 +5,4 @@ My wife love to draw stars in his notebook, I tell her that I can do with progra
 ## License
 
 This project is licensed under the MIT license, see
-[LICENSE](https://github.com/eduinlight/my-wife-star/blob/master/LICENSE).
+[LICENSE](https://github.com/eduinlight/my-wife-star/blob/master/LICENSE.md).
