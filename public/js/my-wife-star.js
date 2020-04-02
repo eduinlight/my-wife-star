@@ -264,7 +264,6 @@ System.register("index", ["board", "star", "point"], function (exports_7, contex
                     const star = new star_1.default(new point_2.default(0, 0), 200, i);
                     board.fillStar(star);
                 }
-                console.log('locasasdad');
             }
         }
     };
