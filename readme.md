@@ -8,7 +8,7 @@ My wife love to draw stars in his notebook, I tell her that I can do with progra
 
 ### Image
 
-![Image]('https://github.com/eduinlight/my-wife-star/blob/master/image.png' "stars")
+![](https://github.com/eduinlight/my-wife-star/blob/master/image.png "stars")
 
 ### For developpers
 
