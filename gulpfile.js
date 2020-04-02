@@ -72,15 +72,6 @@ function build (done) {
     .pipe(gulp.dest(publicJSPath).on('finish', done))
 }
 
-const watchedTsBrowserify = watchify(browserify({
-  basedir: srcPath,
-  debug: true,
-  entries: ['index.ts'],
-  cache: {},
-  packageCache: {}
-})
-  .plugin(tsify))
-
 function buildDev () {
   watchify(browserify({
     basedir: srcPath,
