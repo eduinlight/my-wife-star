@@ -19,7 +19,7 @@ for (let i = 1; i <= totalPoints; i++) {
   canvas.height = starSize
 
   const text = document.createElement('h5')
-  text.innerHTML = `${i} points`
+  text.innerHTML = `${i} point${i === 1 ? '' : 's'}`
   text.style.textAlign = 'center'
 
   const card = document.createElement('div')
