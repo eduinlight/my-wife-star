@@ -106,5 +106,5 @@ function buildDev () {
     .pipe(gulp.dest(publicJSPath))
 }
 
-exports.dev = gulp.parallel(server, liveServerWatch)
+exports.dev = gulp.parallel(server, liveServerWatch, buildDev)
 exports.build = gulp.series(clear, build)
