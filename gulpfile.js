@@ -30,7 +30,7 @@ function server (done) {
   )
 }
 
-function watch (done) {
+function liveServerWatch (done) {
   gulp.watch([path.join(publicPath, '/**/*')]).on('change', file => {
     log('Reload: ', file)
     gulp
@@ -79,12 +79,22 @@ const watchedTsBrowserify = watchify(browserify({
   cache: {},
   packageCache: {}
 })
-  .plugin(tsify), {
-  ignoreWatch: true
-})
+  .plugin(tsify))
 
 function buildDev () {
-  watchedTsBrowserify
+  watchify(browserify({
+    basedir: srcPath,
+    debug: true,
+    entries: ['index.ts'],
+    cache: {},
+    packageCache: {}
+  })
+    .plugin(tsify))
+    .on('update', () => {
+      log.info('Rebuild: ')
+      buildDev()
+    })
+    .on('log', log)
     .bundle()
     .on('error', (error) => {
       if (error.stream) {
@@ -96,11 +106,5 @@ function buildDev () {
     .pipe(gulp.dest(publicJSPath))
 }
 
-watchedTsBrowserify.on('update', () => {
-  log.info('Rebuild: ')
-  buildDev()
-})
-watchedTsBrowserify.on('log', log)
-
-exports.dev = gulp.parallel(server, watch, buildDev)
+exports.dev = gulp.parallel(server, liveServerWatch)
 exports.build = gulp.series(clear, build)

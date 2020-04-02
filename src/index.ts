@@ -36,4 +36,6 @@ for (let i = 1; i <= totalPoints; i++) {
 
     board.fillStar(star)
   }
+
+  console.log('locasasdad')
 }
