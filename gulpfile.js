@@ -11,12 +11,46 @@ const buffer = require('vinyl-buffer')
 const uglify = require('gulp-uglify')
 const clean = require('gulp-clean')
 const watchify = require('watchify')
+const gulpTypescript = require('gulp-typescript')
 
 const srcPath = 'src'
+const buildPath = 'build'
 const publicPath = 'public'
 const publicJSPath = path.join(publicPath, 'js')
 const bundleName = 'my-wife-star.js'
 
+// PROD ENVIROMENT
+function clear (done) {
+  if (fs.existsSync(publicJSPath)) {
+    gulp.src(publicJSPath, { read: false }).pipe(clean().on('finish', done))
+  } else {
+    done()
+  }
+}
+
+function build (done) {
+  browserify({
+    basedir: srcPath,
+    debug: true,
+    entries: ['index.ts'],
+    cache: {},
+    packageCache: {}
+  })
+    .plugin(tsify)
+    .transform('babelify', {
+      presets: ['ES2015'],
+      extensions: ['.ts', '.js']
+    })
+    .bundle()
+    .pipe(source(bundleName))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(publicJSPath).on('finish', done))
+}
+
+// DEV ENVIROMENT
 function server (done) {
   connect.server(
     {
@@ -42,60 +76,44 @@ function liveServerWatch (done) {
   done()
 }
 
-function clear (done) {
-  if (fs.existsSync(publicJSPath)) {
-    gulp.src(publicJSPath, { read: false }).pipe(clean().on('finish', done))
-  } else {
-    done()
-  }
+const tsProject = gulpTypescript.createProject('./tsconfig.json')
+const tsSrc = path.join(srcPath, '**/*.ts')
+
+function tsDev (done) {
+  gulp.src([tsSrc])
+    .pipe(tsProject())
+    .pipe(gulp.dest(['./build']).on('finish', done))
 }
 
-function build (done) {
+function buildDev (done) {
   browserify({
-    basedir: srcPath,
+    basedir: './build',
     debug: true,
-    entries: ['index.ts'],
+    entries: ['index.js'],
     cache: {},
     packageCache: {}
   })
-    .plugin(tsify)
-    .transform('babelify', {
-      presets: ['es2015'],
-      extensions: ['.ts', '.js']
-    })
+    // .transform('babelify', {
+    //   presets: ['ES2015'],
+    //   extensions: ['.ts', '.js']
+    // })
     .bundle()
     .pipe(source(bundleName))
     .pipe(buffer())
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(uglify())
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(publicJSPath).on('finish', done))
+    .pipe(gulp.dest(publicJSPath).on('finish', () => {
+      connect.reload()
+      done()
+    }))
 }
 
-function buildDev () {
-  watchify(browserify({
-    basedir: srcPath,
-    debug: true,
-    entries: ['index.ts'],
-    cache: {},
-    packageCache: {}
-  })
-    .plugin(tsify))
-    .on('update', () => {
-      log.info('Rebuild: ')
-      buildDev()
-    })
-    .on('log', log)
-    .bundle()
-    .on('error', (error) => {
-      if (error.stream) {
-        delete error.stream
-      }
-      log(error)
-    })
-    .pipe(source(bundleName))
-    .pipe(gulp.dest(publicJSPath))
+function watchDev (done) {
+  gulp.watch([tsSrc], gulp.series(clear, buildDev))
 }
 
-exports.dev = gulp.parallel(server, liveServerWatch, buildDev)
+exports.dev = gulp.parallel(server, liveServerWatch,
+  gulp.series(clear, tsDev, buildDev, watchDev)
+)
 exports.build = gulp.series(clear, build)

@@ -1,4 +1,5 @@
 import Radian from './radian'
+
 export default class Angle {
   value: number
 
