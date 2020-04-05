@@ -29,8 +29,6 @@ for (let i = 1; i <= totalPoints; i++) {
 
   container.appendChild(card)
 
-  console.log('oerrras')
-
   const context = canvas.getContext('2d')
   if (context !== null) {
     const board = new Board(context, starSize, starSize)

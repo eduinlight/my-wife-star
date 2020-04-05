@@ -5,52 +5,29 @@ const fs = require('fs')
 const log = require('fancy-log')
 const browserify = require('browserify')
 const source = require('vinyl-source-stream')
-const tsify = require('tsify')
 const sourcemaps = require('gulp-sourcemaps')
 const buffer = require('vinyl-buffer')
 const uglify = require('gulp-uglify')
 const clean = require('gulp-clean')
-const watchify = require('watchify')
 const gulpTypescript = require('gulp-typescript')
 
 const srcPath = 'src'
-const buildPath = 'build'
+const buildPath = '.buildTMP'
 const publicPath = 'public'
 const publicJSPath = path.join(publicPath, 'js')
 const bundleName = 'my-wife-star.js'
 
-// PROD ENVIROMENT
-function clear (done) {
-  if (fs.existsSync(publicJSPath)) {
-    gulp.src(publicJSPath, { read: false }).pipe(clean().on('finish', done))
-  } else {
-    done()
-  }
+// ts compilation
+const tsProject = gulpTypescript.createProject('./tsconfig.json')
+const tsSrc = path.join(srcPath, '/**/*.ts')
+
+function ts (done) {
+  gulp.src([tsSrc])
+    .pipe(tsProject())
+    .pipe(gulp.dest([buildPath]).on('finish', done))
 }
 
-function build (done) {
-  browserify({
-    basedir: srcPath,
-    debug: true,
-    entries: ['index.ts'],
-    cache: {},
-    packageCache: {}
-  })
-    .plugin(tsify)
-    .transform('babelify', {
-      presets: ['ES2015'],
-      extensions: ['.ts', '.js']
-    })
-    .bundle()
-    .pipe(source(bundleName))
-    .pipe(buffer())
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(uglify())
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(publicJSPath).on('finish', done))
-}
-
-// DEV ENVIROMENT
+// SERVER
 function server (done) {
   connect.server(
     {
@@ -65,43 +42,74 @@ function server (done) {
 }
 
 function liveServerWatch (done) {
-  gulp.watch([path.join(publicPath, '/**/*')]).on('change', file => {
+  const watcher = gulp.watch([path.join(publicPath, '/**/*')])
+
+  const handler = file => {
     log('Reload: ', file)
     gulp
       .src(file, {
         read: false
       })
       .pipe(connect.reload())
-  })
+  }
+
+  watcher.on('change', handler)
+  watcher.on('add', handler)
   done()
 }
 
-const tsProject = gulpTypescript.createProject('./tsconfig.json')
-const tsSrc = path.join(srcPath, '**/*.ts')
-
-function tsDev (done) {
-  gulp.src([tsSrc])
-    .pipe(tsProject())
-    .pipe(gulp.dest(['./build']).on('finish', done))
+// clear compilations
+function clearBuild (done) {
+  if (fs.existsSync(buildPath)) {
+    gulp.src(buildPath, { read: false }).pipe(clean().on('finish', done))
+  } else {
+    done()
+  }
 }
 
-function buildDev (done) {
+function clearBundle (done) {
+  if (fs.existsSync(publicJSPath)) {
+    gulp.src(publicJSPath, { read: false }).pipe(clean().on('finish', done))
+  } else {
+    done()
+  }
+}
+
+const clear = gulp.series(clearBundle, clearBuild)
+
+// PROD ENVIROMENT
+
+function build (done) {
   browserify({
-    basedir: './build',
+    basedir: buildPath,
     debug: true,
     entries: ['index.js'],
     cache: {},
     packageCache: {}
   })
-    // .transform('babelify', {
-    //   presets: ['ES2015'],
-    //   extensions: ['.ts', '.js']
-    // })
     .bundle()
     .pipe(source(bundleName))
     .pipe(buffer())
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(uglify())
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(publicJSPath).on('finish', done))
+}
+
+// DEV ENVIROMENT
+
+function buildDev (done) {
+  browserify({
+    basedir: buildPath,
+    debug: true,
+    entries: ['index.js'],
+    cache: {},
+    packageCache: {}
+  })
+    .bundle()
+    .pipe(source(bundleName))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(publicJSPath).on('finish', () => {
       connect.reload()
@@ -109,11 +117,13 @@ function buildDev (done) {
     }))
 }
 
+const dev = gulp.series(ts, buildDev)
+
 function watchDev (done) {
-  gulp.watch([tsSrc], gulp.series(clear, buildDev))
+  gulp.watch([tsSrc], gulp.series(clear, dev))
 }
 
 exports.dev = gulp.parallel(server, liveServerWatch,
-  gulp.series(clear, tsDev, buildDev, watchDev)
+  gulp.series(clear, dev, watchDev)
 )
-exports.build = gulp.series(clear, build)
+exports.build = gulp.series(clear, ts, build)
