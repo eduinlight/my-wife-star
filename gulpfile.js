@@ -78,7 +78,6 @@ function clearBundle (done) {
 const clear = gulp.series(clearBundle, clearBuild)
 
 // PROD ENVIROMENT
-
 function build (done) {
   browserify({
     basedir: buildPath,
@@ -97,7 +96,6 @@ function build (done) {
 }
 
 // DEV ENVIROMENT
-
 function buildDev (done) {
   browserify({
     basedir: buildPath,
@@ -123,7 +121,10 @@ function watchDev (done) {
   gulp.watch([tsSrc], gulp.series(clear, dev))
 }
 
+// development
 exports.dev = gulp.parallel(server, liveServerWatch,
   gulp.series(clear, dev, watchDev)
 )
+
+// production
 exports.build = gulp.series(clear, ts, build)

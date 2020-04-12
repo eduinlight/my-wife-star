@@ -6,6 +6,7 @@
   "repository": "https://github.com/eduinlight/my-wife-star.git",
   "author": "Eduin Garcia Cordero",
   "license": "MIT",
+  "keywords": ["Typescript", "HTML5Canvas", "Gulp"],
   "private": false,
   "devDependencies": {
     "@babel/types": "^7.9.0",
